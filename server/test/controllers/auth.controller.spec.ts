@@ -6,9 +6,7 @@ import * as bcrypt from 'bcrypt';
 import * as session from 'express-session';
 import * as passport from 'passport';
 import { AuthModule } from 'src/auth/auth.module';
-// import type { User } from '@prisma/client';
 import { UsersModule } from 'src/users/users.module';
-// import { DbModule } from 'src/db/db.module';
 
 const mockedUser = {
   username: 'Boris',

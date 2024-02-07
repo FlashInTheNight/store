@@ -26,14 +26,14 @@ import { AddToCartDto } from './dto/add-to-cart.dto';
 export class ShoppingCartController {
   constructor(private readonly shoppingCartService: ShoppingCartService) {}
   @ApiOkResponse({ type: [GetAllResponse] })
-  // @UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   @Get(':id')
   getAll(@Param('id', ParseIntPipe) userId: number) {
     return this.shoppingCartService.findAll(userId);
   }
 
   @ApiOkResponse({ type: AddToCardResponse })
-  // @UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   @Post('/add')
   addToCar(@Body() addToCartDto: AddToCartDto) {
     // let count = new ParseIntPipe().transform(body.count);
@@ -42,7 +42,7 @@ export class ShoppingCartController {
 
   @ApiOkResponse({ type: UpdateCountResponse })
   @ApiBody({ type: UpdateCountRequest })
-  // @UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   @Patch('/count/:id')
   updateCount(
     @Body('count', ParseIntPipe) count: number,
@@ -53,7 +53,7 @@ export class ShoppingCartController {
 
   @ApiOkResponse({ type: TotalPriceResponse })
   @ApiBody({ type: TotalPriceRequest })
-  // @UseGuards(AuthenticatedGuard)
+  @UseGuards(AuthenticatedGuard)
   @Patch('/total-price/:id')
   updateTotalPrice(
     @Body('total_price', ParseIntPipe) total_price: number,
