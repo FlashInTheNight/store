@@ -19,6 +19,11 @@ async function bootstrap() {
   app.use(passport.initialize());
   app.use(passport.session());
 
+  app.enableCors({
+    credentials: true,
+    origin: ['http://localhost:3000'],
+  });
+
   const config = new DocumentBuilder()
     .setTitle('sample e-commerce')
     .setDescription('api documentation')
@@ -31,6 +36,7 @@ async function bootstrap() {
 
   app.useGlobalPipes(new ValidationPipe());
 
-  await app.listen(3000);
+  await app.listen(3001);
+  console.log(`Application is running on: ${await app.getUrl()}`);
 }
 bootstrap();

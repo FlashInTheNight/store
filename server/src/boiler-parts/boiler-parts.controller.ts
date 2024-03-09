@@ -40,14 +40,14 @@ export class BoilerPartsController {
   }
 
   @ApiOkResponse({ type: GetBestsellersResponse })
-  @UseGuards(AuthenticatedGuard)
+  // @UseGuards(AuthenticatedGuard)
   @Get('bestsellers')
   getBestseller() {
     return this.boilerPartsService.bestsellers();
   }
 
   @ApiOkResponse({ type: GetNewResponse })
-  @UseGuards(AuthenticatedGuard)
+  // @UseGuards(AuthenticatedGuard)
   @Get('new')
   getNew() {
     return this.boilerPartsService.new();
@@ -55,7 +55,7 @@ export class BoilerPartsController {
 
   @ApiOkResponse({ type: SearchResponse })
   @ApiBody({ type: SearchRequest })
-  @UseGuards(AuthenticatedGuard)
+  // @UseGuards(AuthenticatedGuard)
   @Post('search')
   search(@Body() { search }: { search: string }) {
     return this.boilerPartsService.searchByString(search);
